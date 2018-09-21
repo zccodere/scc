@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>项目配置</title>
+<script src="[@common.ctx /]/static/plug/jquery/jquery.min.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table-zh-CN.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-switch.js"
+	type="text/javascript"></script>
+	
+<script src="[@common.ctx /]/static/js/common/public.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/js/project.js"
+	type="text/javascript"></script>
+
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap-table.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap-switch.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/css/common/public.css" />
+</head>
+
+<body>
+<input type="hidden" id="ctx" value="[@common.ctx /]" />
+
+	<div class="container">
+		<br />
+		<div class="panel panel-default" style="margin-bottom: 0px;">
+			<div class="panel-body">
+				<form id="formSearch" class="form-inline">
+					<div class="form-group">
+						<label class="control-label" for="search_project_code">项目编码</label>
+						<input type="text" class="form-control" id="search_project_code" placeholder="请输入项目编码">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_project_name">项目名称</label>
+						<input type="text" class="form-control" id="search_project_name" placeholder="请输入项目名称">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_project_status">状态</label>
+						<div class="form-group">
+							<select class="form-control" id="search_project_status">
+								<option value="2">全部</option>
+								<option value="1">有效</option>
+								<option value="0">无效</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" id="btn_query" class="btn btn-primary">查询</button>
+						<button type="button" id="btn_reset" class="btn btn-primary">重置</button>
+					</div>
+			</div>
+			</form>
+		</div>
+
+	<div id="toolbar" class="btn-group">
+		<button id="btn_add" type="button" class="btn btn-primary">
+			<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+		</button>
+		<button id="btn_edit" type="button" class="btn btn-success">
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+		</button>
+		<button id="btn_delete" type="button" class="btn btn-warning">
+			<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+		</button>
+		<button id="btn_show_prop" type="button" class="btn btn-primary">
+			<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>预览参数
+		</button>
+		<button id="btn_down_prop" type="button" class="btn btn-primary">
+			<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>下载参数
+		</button>
+		<button id="btn_refresh" type="button" class="btn btn-info">
+			<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>刷新缓存
+		</button>
+		<button id="btn_security" type="button" class="btn btn-danger">
+				<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>安全策略
+		</button>
+	</div>
+
+	<table id="table_project"></table>
+
+	</div>
+	
+	<!-- 项目编辑 模态框 -->
+	<div class="modal_layer" belong="mask" id="project_edit">
+		<div class="bg_cover"></div>
+		<div class="modal_box">
+			<div class="modal_top">
+				<span class="modal_title">项目编辑</span><span class="modal_close">x</span>
+			</div>
+			<div class="modal_middle" style="margin-top: 0;">
+				<div class="detail_last_item">
+					<input type="hidden" id="project_edit_oper_type" value="101">
+					<input type="hidden" id="project_edit_id" value="">
+					<div class="form-group">
+						<label for="exampleInputEmail1">项目编码</label> <input type="text"
+							class="form-control" id="project_edit_code" placeholder="请输入项目编码">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">项目名称</label> <input type="text"
+							class="form-control" id="project_edit_name" placeholder="请输入项目名称">
+					</div>
+					<div class="form-group">
+						<label for="name">状态</label> <select class="form-control"
+							id="project_edit_status">
+							<option value="1">有效</option>
+							<option value="0">无效</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal_bottom">
+				<div class="btn btn_primary" id="project_edit_save_btn">确 定</div>
+				<div class="btn btn_default" id="project_edit_cancel_btn">取 消</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 安全策略-模态框 -->
+	<div class="modal fade" id="securityModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h6 class="modal-title" id="myModalLabel">安全策略</h6>
+				</div>
+				<div class="modal-body">
+					<input type="hidden" id="security_project_id" value="">
+
+					<form class="form-horizontal">
+						<div class="form-group">
+							<label for="inputEmail3" class="col-sm-2 control-label">安全验证</label>
+							<div class="col-sm-10">
+					            <div class="switch" tabindex="0">
+					                <input id="security_check" type="checkbox" data-size="small" 
+					                	data-on-text="开启" data-off-text="关闭" data-off-color="danger"/>
+					            </div>
+				            </div>
+						</div>
+						<div class="form-group" id="securityModalToken">
+							<label for="inputPassword3" class="col-sm-2 control-label">验证token</label>
+							<div class="col-sm-5">
+								<p class="form-control-static"><span id="securityTokenStr">2bc9c1a5bd204127bd3830a211842eb4</span></p>
+							</div>
+							<div class="col-sm-5">
+								<button type="button" class="btn btn-primary" id="securityModalTokenReset">重置token</button>
+							</div>
+						</div>
+					</form>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary" id="securityModalSave">保存修改</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

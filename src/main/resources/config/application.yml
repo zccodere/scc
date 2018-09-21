@@ -1,0 +1,17 @@
+#server:
+#    port: 8081
+#server:
+#  context-path: /urc_web
+spring: 
+  profiles: 
+    active: dev
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+  redis: 
+    pool: 
+      max-idle: 8
+      min-idle: 0
+      max-active: 8
+      max-wait: -1

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>项目属组</title>
+<script src="[@common.ctx /]/static/plug/jquery/jquery.min.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table-zh-CN.js"
+	type="text/javascript"></script>
+
+<script src="[@common.ctx /]/static/js/common/public.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/js/projectgroup.js"
+	type="text/javascript"></script>
+
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap-table.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/css/common/public.css" />
+</head>
+
+<body>
+<input type="hidden" id="ctx" value="[@common.ctx /]" />
+	<div class="container">
+		<br />
+		<div class="panel panel-default" style="margin-bottom: 0px;">
+			<div class="panel-body">
+				<form id="formSearch" class="form-inline">
+					<div class="form-group">
+						<label class="control-label" for="search_project_group_code">项目选择</label>
+						<input type="text" class="form-control" id="search_project_group_project" placeholder="请选择项目">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_project_group_name">参数属组</label>
+						<input type="text" class="form-control" id="search_project_group_group" placeholder="请选择参数属组">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_project_group_status">状态</label>
+						<div class="form-group">
+							<select class="form-control" id="search_project_group_status">
+								<option value="2">全部</option>
+								<option value="1">有效</option>
+								<option value="0">无效</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" id="btn_query" class="btn btn-primary">查询</button>
+						<button type="button" id="btn_reset" class="btn btn-primary">重置</button>
+					</div>
+			</div>
+			</form>
+		</div>
+
+		<div id="toolbar" class="btn-group">
+			<button id="btn_add" type="button" class="btn btn-primary">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			</button>
+			<button id="btn_edit" type="button" class="btn btn-success">
+				<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
+			</button>
+			<button id="btn_delete" type="button" class="btn btn-warning">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			</button>
+		</div>
+
+		<table id="table_project_group"></table>
+
+	</div>
+	
+	<!-- 项目属组编辑-模态框 -->	
+	<div class="modal_layer" belong="mask" id="project_group_edit">
+		<div class="bg_cover"></div>
+		<div class="modal_box">
+			<div class="modal_top">
+				<span class="modal_title">项目属组</span><span class="modal_close">x</span>
+			</div>
+			<div class="modal_middle" style="margin-top: 0;">
+				<div class="detail_last_item">
+					<input type="hidden" id="project_group_edit_id" value="">
+					<div class="form-group">
+						<label class="control-label" for="exampleInputEmail1">项目选择</label> <input type="text"
+							class="form-control" id="project_group_edit_project" placeholder="请选择项目">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="exampleInputPassword1">参数属组</label> <input type="text"
+							class="form-control" id="project_group_edit_group" placeholder="请选择参数组">
+					</div>
+					<div class="form-group">
+						<label for="name">状态</label> <select class="form-control"
+							id="project_group_edit_status">
+							<option value="1">有效</option>
+							<option value="0">无效</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal_bottom">
+				<div class="btn btn_primary" id="project_group_edit_save_btn">确 定</div>
+				<div class="btn btn_default" id="project_group_edit_cancel_btn">取 消</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 选择项目-模态框 -->
+	<div class="modal_layer" belong="mask" id="projectModal">
+		<div class="bg_cover" style="z-index:1002;"></div>
+		<div class="modal_box" style="z-index:1003;">
+			<div class="modal_top">
+				<span class="modal_title">选择项目</span><span class="modal_close">x</span>
+			</div>
+			<div class="modal_middle" style="margin-top:0;">
+				<div class="detail_last_item">
+					<ul class="detail_info_body">
+						<li class="line">
+							<div class="width100per text_center">
+								<span class="input_box width150">
+									<input type="text" id="projectModalName" placeholder="请输入参数组名称"/>
+								</span>
+								<div class="btn btn_primary mleft10" id="projectModalSearchBtn">查询</div>
+							</div>
+						</li>
+						<li class="line">
+							<div class="projectModalList" id="projectModalList">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- 参数属组-模态框 -->
+	<div class="modal_layer" belong="mask" id="groupModal">
+		<div class="bg_cover" style="z-index:1002;"></div>
+		<div class="modal_box" style="z-index:1003;">
+			<div class="modal_top">
+				<span class="modal_title">选择属组</span><span class="modal_close">x</span>
+			</div>
+			<div class="modal_middle" style="margin-top:0;">
+				<div class="detail_last_item">
+					<ul class="detail_info_body">
+						<li class="line">
+							<div class="width100per text_center">
+								<span class="input_box width150">
+									<input type="text" id="groupModalName" placeholder="请输入参数组名称"/>
+								</span>
+								<div class="btn btn_primary mleft10" id="groupModalSearchBtn">查询</div>
+							</div>
+						</li>
+						<li class="line">
+							<div class="groupModalList" id="groupModalList">
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

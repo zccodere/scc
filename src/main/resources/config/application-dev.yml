@@ -1,0 +1,21 @@
+# 重庆测试环境配置
+#server:
+#    port: 8081
+spring: 
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/demo?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  redis: 
+    password: zhongguo
+    host: localhost
+    port: 6379
+uac: 
+  rest: 
+    host: http://123.147.223.93:8094/uac_rest/
+url: 
+  domain: 
+    prefix: http://zizhu.cqwin.com/
+  generate: 
+    mode: MD5

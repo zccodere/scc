@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<title>短网址管理</title>
+<script src="[@common.ctx /]/static/plug/jquery/jquery.min.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap.min.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table.js"
+	type="text/javascript"></script>
+<script
+	src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap-table-zh-CN.js"
+	type="text/javascript"></script>
+
+<script src="[@common.ctx /]/static/js/common/public.js"
+	type="text/javascript"></script>
+<script src="[@common.ctx /]/static/js/shorturl.js"
+	type="text/javascript"></script>
+
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap-table.css" />
+<link type="text/css" rel="stylesheet"
+	href="[@common.ctx /]/static/css/common/public.css" />
+</head>
+
+<body>
+<input type="hidden" id="ctx" value="[@common.ctx /]" />
+	<div class="container">
+		<br />
+		<div class="panel panel-default" style="margin-bottom: 0px;">
+			<div class="panel-body">
+				<form id="formSearch" class="form-inline">
+					<div class="form-group">
+						<label class="control-label" for="search_shorturl_code">短网址</label>
+						<input type="text" class="form-control" id="search_shorturl_code" placeholder="请输入短网址">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_longurl_code">长网址</label>
+						<input type="text" class="form-control" id="search_longurl_code" placeholder="请输入长网址">
+					</div>
+					<div class="form-group">
+						<label class="control-label" for="search_url_status">状态</label>
+						<div class="form-group">
+							<select class="form-control" id="search_url_status">
+								<option value="2">全部</option>
+								<option value="1">有效</option>
+								<option value="0">无效</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="button" id="btn_query" class="btn btn-primary">查询</button>
+						<button type="button" id="btn_reset" class="btn btn-primary">重置</button>
+					</div>
+			</div>
+			</form>
+		</div>
+
+		<div id="toolbar" class="btn-group">
+			<button id="btn_add" type="button" class="btn btn-primary">
+				<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+			</button>
+			<button id="btn_delete" type="button" class="btn btn-warning">
+				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
+			</button>
+			<button id="btn_refresh" type="button" class="btn btn-info">
+				<span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>刷新缓存
+			</button>
+		</div>
+
+		<table id="table_url_config"></table>
+
+	</div>
+	
+	
+	<!-- URL-模态框 -->	
+	<div class="modal_layer" belong="mask" id="url_config_edit">
+		<div class="bg_cover"></div>
+		<div class="modal_box">
+			<div class="modal_top">
+				<span class="modal_title">URL配置</span><span class="modal_close">x</span>
+			</div>
+			<div class="modal_middle">
+				<div class="detail_last_item">
+					<input type="hidden" id="url_edit_id" value="">
+					<div class="form-group">
+						<label class="control-label">请输入长网址</label> <input type="text"
+							class="form-control" id="long_url" placeholder="请输入长网址">
+					</div>
+                    <!-- <div class="form-group">
+						<label class="control-label">短网址域名</label> <input type="text"
+							class="form-control" id="short_url" placeholder="http://zizhu.cqwin.com">
+					</div> -->
+					<div class="form-group">
+						<label for="name">状态</label> <select class="form-control"
+							id="url_status">
+							<option value="1">有效</option>
+							<option value="0">无效</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="modal_bottom">
+				<div class="btn btn_primary" id="url_edit_save_btn">压缩一下</div>
+				<div class="btn btn_default" id="url_edit_cancel_btn">取 消</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

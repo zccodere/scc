@@ -1,0 +1,47 @@
+/* 上边 - 层叠顺序900 */
+.top_bar{min-width:1000px; height:60px; display:block; position:fixed; left:0; top:0; right:0; z-index:930; background-color:#f5f5f5; border-bottom:1px solid #ccc; white-space:normal; overflow:hidden;}
+.top_bar .left_cell{height:60px; padding:0 5px; display:inline-block; *zoom:1; *display:inline; vertical-align:middle;}
+.top_bar .left_cell .logo_img{width:50px; height:50px; margin-top:5px;}
+.top_bar .left_cell .logo_cn{height:30px; line-height:30px; margin-top:4px; font-size:20px; color:#333;}
+.top_bar .left_cell .logo_en{height:18px; line-height:18px; font-size:12px; color:#2dafda;}
+.top_bar .right_cell{height:60px; padding:0 5px; display:inline-block; *zoom:1; *display:inline; vertical-align:middle;}
+.top_bar .right_cell:hover{background-color:#eee;}
+.top_bar .right_cell span{line-height:60px;}
+/* 左边 - 层叠顺序920 */
+.left_bar{width:70px; padding-top:5px; *padding-top:10px; display:block; position:fixed; left:0; top:60px; bottom:0; z-index:920; font-size:12px; background-color:#f9f9f9; border-right:1px solid #bbb; overflow:hidden;}
+.left_bar nav{width:64px; display:block;}
+.left_bar>ul{width:86px; height:100%; overflow-x:hidden; overflow-y:scroll;}
+.left_bar ul li{text-align:center; color:#777; cursor:pointer;}
+.left_bar ul li.active{background-color:#eee;}
+.left_bar ul li:hover>span, .left_bar ul li.active>span{color:#2dafda;}
+.left_bar .menu_level1>li{padding:8px 5px;}
+.left_bar .menu_level1>li>i{width:100%; height:26px; margin-bottom:5px; display:block; background-repeat:no-repeat; background-position:center center;}
+.left_bar .menu_level1>li>i.icon_order{background-image:url(../images/menu/order.png);}
+.left_bar .menu_level1>li:hover>i.icon_order, .left_bar .menu_level1>li.active>i.icon_order{background-image:url(../images/menu/order_active.png);}
+.left_bar .menu_level1>li>i.icon_task{background-image:url(../images/menu/task.png);}
+.left_bar .menu_level1>li:hover>i.icon_task, .left_bar .menu_level1>li.active>i.icon_task{background-image:url(../images/menu/task_active.png);}
+.left_bar .menu_level1>li>i.icon_monitor{background-image:url(../images/menu/monitor.png);}
+.left_bar .menu_level1>li:hover>i.icon_monitor, .left_bar .menu_level1>li.active>i.icon_monitor{background-image:url(../images/menu/monitor_active.png);}
+.left_bar .menu_level1>li>i.icon_document{background-image:url(../images/menu/document.png);}
+.left_bar .menu_level1>li:hover>i.icon_document, .left_bar .menu_level1>li.active>i.icon_document{background-image:url(../images/menu/document_active.png);}
+.left_bar .menu_level1>li>i.icon_weekly{background-image:url(../images/menu/weekly.png);}
+.left_bar .menu_level1>li:hover>i.icon_weekly, .left_bar .menu_level1>li.active>i.icon_weekly{background-image:url(../images/menu/weekly_active.png);}
+.left_bar .menu_level1>li>i.icon_config{background-image:url(../images/menu/config.png);}
+.left_bar .menu_level1>li:hover>i.icon_config, .left_bar .menu_level1>li.active>i.icon_config{background-image:url(../images/menu/config_active.png);}
+.left_bar .menu_level2{margin-top:-55px; *margin-top:-45px; padding:5px 0; position:fixed; left:69px; z-index:921; background-color:#f9f9f9; border:1px solid #bbb; border-left:none;}
+.left_bar .menu_level2>li{padding:10px 30px;}
+/* 下边 - 层叠顺序900 */
+.bottom_bar{min-width:1000px; height:30px; line-height:30px; display:block; position:fixed; left:0; right:0; bottom:0; z-index:900; text-align:center;}
+.bottom_bar font{font-size:12px; color:#666;}
+/* 页签栏 - 层叠顺序910 */
+.tab_bar{min-width:1000px; height:34px; display:block; position:fixed; left:70px; top:60px; right:0; z-index:910; background-color:#fff; border-bottom:1px solid #bbb; overflow:hidden;}
+.tab_bar .tab_box{position:fixed; top:66px; z-index:911;}
+.tab_bar .tab_box li{margin-left:5px; padding:5px; float:left; color:#777; background-color:#f9f9f9; border:1px solid #bbb; -moz-border-radius:15px 2px 0 0; -webkit-border-radius:15px 2px 0 0; border-radius:15px 2px 0 0; cursor:pointer;}
+.tab_bar .tab_box li.active{background-color:#fff; border-bottom:1px solid #fff;}
+.tab_bar .tab_box li.active>b{color:#bbb;}
+.tab_bar .tab_box li:hover>span, .tab_bar .tab_box li.active>span{color:#2dafda;}
+.tab_bar .tab_box li span{margin:0 3px;}
+.tab_bar .tab_box li b{padding:0 3px; color:#bbb;}
+.tab_bar .tab_box li b:hover{color:#d94032;}
+/* 中间 */
+.page_frame{display:block; position:fixed; left:71px; top:60px; right:0; bottom:30px; background-color:#fff; overflow:hidden;}

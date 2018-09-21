@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>配置中心</title>
+
+<script type="text/javascript" src="[@common.ctx /]/static/plug/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="[@common.ctx /]/static/plug/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="[@common.ctx /]/static/js/common/main.js"></script>
+
+<link type="text/css" rel="stylesheet" href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap.min.css" />
+<link type="text/css" rel="stylesheet" href="[@common.ctx /]/static/plug/bootstrap/css/bootstrap-theme.min.css" />
+<link type="text/css" rel="stylesheet" href="[@common.ctx /]/static/css/common/main.css" />
+<link type="text/css" rel="stylesheet" href="[@common.ctx /]/static/css/common/public.css" />
+
+<link rel="shortcut icon" href="[@common.ctx /]/static/img/icon/favicon.ico" />
+
+</head>
+<body>
+	<input type="hidden" id="ctx" value="[@common.ctx /]" />
+	
+	<div class="top_bar">
+		<div class="left mleft15">
+			<div class="left_cell"><img class="logo_img" src="[@common.ctx /]/static/img/icon/logo.png" /></div>
+			<div class="left_cell"><p class="logo_cn">配置中心</p><p class="logo_en">Config Center</p></div>
+		</div>
+		<!-- <div class="right mright15">
+			<div class="right_cell"><span>授权人：</span><span id="oper_name">赵六</span></div>
+			<div class="right_cell"><div class="btn btn_link mtop15" id="logoutBtn">退出</div></div>
+		</div> -->
+	</div>
+	
+	<div class="left_bar">
+		<ul class="menu_level1">
+			<li no="project" ><i class="glyphicon glyphicon-th-list"></i><span>项目配置</span></li>
+			<li no="projectgroup" ><i class="glyphicon glyphicon-th-large"></i><span>项目属组</span></li>
+			<li no="propertiesgroup" ><i class="glyphicon glyphicon-menu-hamburger"></i><span>属组配置</span></li>
+			<li no="properties" ><i class="glyphicon glyphicon-edit"></i><span>参数配置</span></li>	
+			<li no="codetype" ><i class="glyphicon glyphicon-list"></i><span>类型配置</span></li>
+			<li no="codelist" ><i class="glyphicon glyphicon-file"></i><span>类型参数</span></li>
+			<li no="shortUrl" ><i class="glyphicon glyphicon-road"></i><span>短网址管理</span></li>
+		</ul>
+	</div>
+	
+	<div class="page_frame">
+		<iframe id="main_iframe" label="首页" src="home" scrolling="yes" frameborder="0" style="width: 100%; height: 100%;"></iframe>
+	</div>
+	
+	<div class="bottom_bar ">
+		<font>©2017 深圳天源迪科信息技术股份有限公司 版权所有</font>
+	</div>
+	
+</body>
+</html>
